@@ -19,7 +19,8 @@ const Messenger = () => {
 
   const initialNewMessage = {
     content: "",
-    private: false
+    private: false,
+    author: myName
   };
   const [newMessage, setNewMessage] = useState(initialNewMessage);
 
@@ -28,7 +29,6 @@ const Messenger = () => {
     const newMessageWithData = {
       ...newMessage,
       id: messages.length + 2,
-      author: myName,
       date: new Date().toDateString()
     };
     setMessages([...messages, newMessageWithData]);
@@ -59,15 +59,14 @@ const Messenger = () => {
           control={<Checkbox value="private" color="primary" />}
           label="Message privé"
           checked={newMessage.private}
-          onChange={() =>
-            setNewMessage({ ...newMessage, private: !newMessage.private })
+          onChange={e =>
+            setNewMessage({ ...newMessage, private: e.target.checked })
           }
         />
         <Button
           type="submit"
           variant="contained"
           color="primary"
-          block
           startIcon={<Send />}
         >
           Envoyer
