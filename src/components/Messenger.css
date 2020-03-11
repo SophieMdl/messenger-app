@@ -1,0 +1,11 @@
+.message {
+  padding: 12px;
+  width: fit-content;
+  margin-bottom: 6px;
+  background: grey;
+}
+
+.new-message {
+  width: 100%;
+  margin-bottom: 12px;
+}
