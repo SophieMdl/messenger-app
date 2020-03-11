@@ -24,11 +24,7 @@ const MessageContent = ({ msg }) => {
           Message privé
         </Box>
       )}
-      <CardHeader
-        avatar={<Avatar />}
-        title={msg.author}
-        subheader="September 14, 2016"
-      />
+      <CardHeader avatar={<Avatar />} title={msg.author} subheader={msg.date} />
       <CardContent>
         <Typography>{msg.content}</Typography>
       </CardContent>

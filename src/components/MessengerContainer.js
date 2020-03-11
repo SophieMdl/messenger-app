@@ -29,7 +29,7 @@ const Messenger = () => {
       ...newMessage,
       id: messages.length + 2,
       author: myName,
-      date: new Date()
+      date: new Date().toDateString()
     };
     setMessages([...messages, newMessageWithData]);
     setNewMessage(initialNewMessage);
