@@ -1,7 +1,8 @@
 export const initialMessages = [
   {
     id: 1,
-    content: "Bonjour",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et pellentesque justo, nec ultricies tortor. ",
     author: "Rémy Dupond",
     date: "18 / 01 / 2020",
     private: false
