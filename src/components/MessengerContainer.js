@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MessageContent from "./MessageContent.js";
 import { initialMessages } from "../messages.js";
 import {
@@ -13,19 +13,28 @@ import { Send } from "@material-ui/icons";
 import "./Messenger.css";
 
 const myName = "Loki";
+const initialNewMessage = {
+  content: "",
+  private: false,
+  author: myName
+};
+
+const getInitialMessages = () => {
+  // replace this code by an API call
+  return initialMessages;
+};
 
 const Messenger = () => {
-  const [messages, setMessages] = useState(initialMessages);
-
-  const initialNewMessage = {
-    content: "",
-    private: false,
-    author: myName
-  };
+  const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState(initialNewMessage);
+
+  useEffect(() => {
+    setMessages(getInitialMessages);
+  }, []);
 
   const handleSubmit = e => {
     e.preventDefault();
+    // Normally post data to API and eventually get response to update state
     const newMessageWithData = {
       ...newMessage,
       id: messages.length + 2,
