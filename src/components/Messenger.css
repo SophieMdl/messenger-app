@@ -9,6 +9,9 @@
   margin-bottom: 12px;
 }
 
-.private-box {
+.private-message,
+.public-message {
+  display: flex;
+  align-items: flex-end;
   background-color: #f1f1f1;
 }
