@@ -73,10 +73,12 @@ const Messenger = () => {
           }
         />
         <Button
+          className="submit-button"
           type="submit"
           variant="contained"
           color="primary"
           startIcon={<Send />}
+          disabled={newMessage.content === ""}
         >
           Envoyer
         </Button>
