@@ -1,53 +1,43 @@
-import React, { useState, useEffect } from "react";
-import MessageContent from "./MessageContent.js";
-import { initialMessages } from "../messages.js";
+import React, { useState } from 'react'
+import MessageContent from './MessageContent.js'
 import {
   Container,
   Button,
   TextField,
   Checkbox,
-  FormControlLabel
-} from "@material-ui/core";
-import { Send } from "@material-ui/icons";
+  FormControlLabel,
+} from '@material-ui/core'
+import { Send } from '@material-ui/icons'
 
-import "./Messenger.css";
+import './Messenger.css'
 
-const myName = "Loki";
+const myName = 'my name'
+
 const initialNewMessage = {
-  content: "",
+  content: '',
   private: false,
-  author: myName
-};
-
-const getInitialMessages = () => {
-  // replace this code by an API call
-  return initialMessages;
-};
+  author: myName,
+}
 
 const Messenger = () => {
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState(initialNewMessage);
+  const [messages, setMessages] = useState([])
+  const [newMessage, setNewMessage] = useState(toto)
 
-  useEffect(() => {
-    setMessages(getInitialMessages);
-  }, []);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    // Normally post data to API and eventually get response to update state
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const newMessageWithData = {
       ...newMessage,
       id: messages.length + 2,
-      date: new Date().toDateString()
-    };
-    setMessages([...messages, newMessageWithData]);
-    setNewMessage(initialNewMessage);
-  };
+      date: new Date().toDateString(),
+    }
+    setMessages([...messages, newMessageWithData])
+    setNewMessage(initialNewMessage)
+  }
 
   return (
     <Container maxWidth="sm">
       <h2>Messages</h2>
-      {messages.map(msg => (
+      {messages.map((msg) => (
         <MessageContent key={msg.id} msg={msg} />
       ))}
       <form autoComplete="off" onSubmit={handleSubmit}>
@@ -57,7 +47,7 @@ const Messenger = () => {
           id="new-message"
           label="Mon message"
           value={newMessage.content}
-          onChange={e =>
+          onChange={(e) =>
             setNewMessage({ ...newMessage, content: e.target.value })
           }
           rows={4}
@@ -68,7 +58,7 @@ const Messenger = () => {
           control={<Checkbox value="private" color="primary" />}
           label="Message privé"
           checked={newMessage.private}
-          onChange={e =>
+          onChange={(e) =>
             setNewMessage({ ...newMessage, private: e.target.checked })
           }
         />
@@ -78,13 +68,13 @@ const Messenger = () => {
           variant="contained"
           color="primary"
           startIcon={<Send />}
-          disabled={newMessage.content === ""}
+          disabled={newMessage.content === ''}
         >
           Envoyer
         </Button>
       </form>
     </Container>
-  );
-};
+  )
+}
 
-export default Messenger;
+export default Messenger

@@ -1,13 +1,13 @@
-import React from "react";
-import "./App.css";
-import MessengerContainer from "./components/MessengerContainer";
+import React from 'react'
+import './App.css'
+import MessengerContainer from './components/MessengerContainer'
 
 function App() {
   return (
     <div className="App">
       <MessengerContainer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,15 +1,16 @@
-import React from "react";
+import React from 'react'
 import {
   Card,
   CardHeader,
   Avatar,
   Typography,
   CardContent,
-  Box
-} from "@material-ui/core";
-import { Lock } from "@material-ui/icons";
+  Box,
+} from '@material-ui/core'
+import { Lock } from '@material-ui/icons'
 
 const MessageContent = ({ msg }) => {
+  cat = 1
   return (
     <Card className="message" key={msg.id} variant="outlined">
       {msg.private === true ? (
@@ -27,7 +28,7 @@ const MessageContent = ({ msg }) => {
         <Typography>{msg.content}</Typography>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
-export default MessageContent;
+export default React.memo(MessageContent)
