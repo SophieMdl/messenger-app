@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MessageContent from './MessageContent.js'
+import MessageContent from './MessageContent.jsx'
 import {
   Container,
   Button,
@@ -21,7 +21,7 @@ const initialNewMessage = {
 
 const Messenger = () => {
   const [messages, setMessages] = useState([])
-  const [newMessage, setNewMessage] = useState(toto)
+  const [newMessage, setNewMessage] = useState(initialNewMessage)
 
   const handleSubmit = (e) => {
     e.preventDefault()

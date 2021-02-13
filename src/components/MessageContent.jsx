@@ -10,7 +10,6 @@ import {
 import { Lock } from '@material-ui/icons'
 
 const MessageContent = ({ msg }) => {
-  cat = 1
   return (
     <Card className="message" key={msg.id} variant="outlined">
       {msg.private === true ? (
@@ -25,7 +24,7 @@ const MessageContent = ({ msg }) => {
       )}
       <CardHeader avatar={<Avatar />} title={msg.author} subheader={msg.date} />
       <CardContent>
-        <Typography>{msg.content}</Typography>
+        <Typography>{msg.id}</Typography>
       </CardContent>
     </Card>
   )
