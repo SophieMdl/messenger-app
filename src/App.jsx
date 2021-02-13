@@ -1,12 +1,18 @@
-import { TvTwoTone } from '@material-ui/icons'
 import React from 'react'
 import './App.css'
-import MessengerContainer from './components/MessengerContainer'
+import ChatRoom from './pages/ChatRoom'
+import Home from './pages/Home'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <MessengerContainer />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/:roomId" component={ChatRoom} />
+        </Switch>
+      </Router>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import MessageContent from './MessageContent.jsx'
+import MessageContent from '../components/MessageContent.jsx'
 import {
   Container,
   Button,
@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core'
 import { Send } from '@material-ui/icons'
 
-import './Messenger.css'
+import './chatRoom.css'
 
 const myName = 'my name'
 
@@ -19,7 +19,7 @@ const initialNewMessage = {
   author: myName,
 }
 
-const Messenger = () => {
+const ChatRoom = () => {
   const [messages, setMessages] = useState([])
   const [newMessage, setNewMessage] = useState(initialNewMessage)
 
@@ -63,7 +63,6 @@ const Messenger = () => {
           }
         />
         <Button
-          className="submit-button"
           type="submit"
           variant="contained"
           color="primary"
@@ -77,4 +76,4 @@ const Messenger = () => {
   )
 }
 
-export default Messenger
+export default ChatRoom
