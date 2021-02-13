@@ -12,19 +12,12 @@ import { Lock } from '@material-ui/icons'
 const MessageContent = ({ msg }) => {
   return (
     <Card className="message" key={msg.id} variant="outlined">
-      {msg.private === true ? (
-        <Box p={1} className="private-message">
-          <Lock fontSize="small" />
-          Message privé
-        </Box>
-      ) : (
-        <Box className="public-message" p={1}>
-          Message public
-        </Box>
-      )}
+      <Box p={1} className="private-message">
+        {msg.author}
+      </Box>
       <CardHeader avatar={<Avatar />} title={msg.author} subheader={msg.date} />
       <CardContent>
-        <Typography>{msg.id}</Typography>
+        <Typography>{msg.content}</Typography>
       </CardContent>
     </Card>
   )

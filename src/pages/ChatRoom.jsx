@@ -1,44 +1,36 @@
 import React, { useState } from 'react'
 import MessageContent from '../components/MessageContent.jsx'
-import {
-  Container,
-  Button,
-  TextField,
-  Checkbox,
-  FormControlLabel,
-} from '@material-ui/core'
+import { Container, Button, TextField } from '@material-ui/core'
 import { Send } from '@material-ui/icons'
-
+import useChat from '../useChat.js'
 import './chatRoom.css'
 
 const myName = 'my name'
 
 const initialNewMessage = {
   content: '',
-  private: false,
   author: myName,
 }
 
-const ChatRoom = () => {
-  const [messages, setMessages] = useState([])
+const ChatRoom = (props) => {
+  const { roomId } = props.match.params
+  const { messages, sendMessage } = useChat(roomId)
   const [newMessage, setNewMessage] = useState(initialNewMessage)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newMessageWithData = {
+    sendMessage(newMessage)
+    setNewMessage({
+      content: '',
       ...newMessage,
-      id: messages.length + 2,
-      date: new Date().toDateString(),
-    }
-    setMessages([...messages, newMessageWithData])
-    setNewMessage(initialNewMessage)
+    })
   }
 
   return (
     <Container maxWidth="sm">
-      <h2>Messages</h2>
-      {messages.map((msg) => (
-        <MessageContent key={msg.id} msg={msg} />
+      <h1>Room: {roomId}</h1>
+      {messages.map((msg, i) => (
+        <MessageContent key={i} msg={msg} />
       ))}
       <form autoComplete="off" onSubmit={handleSubmit}>
         <TextField
@@ -53,14 +45,6 @@ const ChatRoom = () => {
           rows={4}
           margin="normal"
           required
-        />
-        <FormControlLabel
-          control={<Checkbox value="private" color="primary" />}
-          label="Message privé"
-          checked={newMessage.private}
-          onChange={(e) =>
-            setNewMessage({ ...newMessage, private: e.target.checked })
-          }
         />
         <Button
           type="submit"
